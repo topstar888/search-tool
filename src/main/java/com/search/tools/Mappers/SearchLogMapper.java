@@ -1,3 +1,7 @@
+/**************************************************************************************************
+ * Copyright (c) 2019. Abu all rights reserved.                                                   *
+ **************************************************************************************************/
+
 package com.search.tools.Mappers;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;

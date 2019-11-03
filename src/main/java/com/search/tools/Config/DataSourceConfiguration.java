@@ -1,3 +1,7 @@
+/**************************************************************************************************
+ * Copyright (c) 2019. Abu all rights reserved.                                                   *
+ **************************************************************************************************/
+
 package com.search.tools.Config;
 
 import org.springframework.boot.jdbc.DataSourceBuilder;

@@ -1,3 +1,7 @@
+/**************************************************************************************************
+ * Copyright (c) 2019. Abu all rights reserved.                                                   *
+ **************************************************************************************************/
+
 package com.search.tools.Entities;
 
 import com.baomidou.mybatisplus.annotation.IdType;

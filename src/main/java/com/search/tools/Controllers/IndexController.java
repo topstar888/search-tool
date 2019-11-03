@@ -1,3 +1,7 @@
+/**************************************************************************************************
+ * Copyright (c) 2019. Abu all rights reserved.                                                   *
+ **************************************************************************************************/
+
 package com.search.tools.Controllers;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
