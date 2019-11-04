@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.search</groupId>
     <artifactId>tools</artifactId>
-    <version>0.0.1</version>
+    <version>0.0.2</version>
     <packaging>jar</packaging>
     <name>tools</name>
     <description>one search tool by Abu</description>

@@ -12,6 +12,7 @@ import com.search.tools.Entities.SearchLog;
 import com.search.tools.Mappers.KeywordMapper;
 import com.search.tools.Mappers.SearchLogMapper;
 import com.search.tools.Services.DBHandler;
+import com.search.tools.Services.LineSeparatorHelper;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -21,6 +22,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -98,9 +100,7 @@ public class IndexController {
             nums.add(i);
             i++;
         }
-
         modelMap.addAttribute("pageList", nums);
-
 
         QueryWrapper<Keyword> qy    = new QueryWrapper<Keyword>().select();
         IPage<Keyword>        kPage = new Page<>(1, 20);
@@ -117,7 +117,6 @@ public class IndexController {
         }
 
         modelMap.addAttribute("kPageList", kNums);
-
 
         return "index";
     }
@@ -144,6 +143,21 @@ public class IndexController {
         BufferedOutputStream stream = new BufferedOutputStream(fos);
         stream.write(file.getBytes());
         stream.flush();
+
+        StringBuffer str = new StringBuffer("");
+        FileReader   fr  = new FileReader(saveFile);
+        int          ch  = 0;
+        while ((ch = fr.read()) != -1) {
+            str.append((char) ch);
+        }
+        fr.close();
+        
+        if (!LineSeparatorHelper.getLineSeparator(saveFile).name().equals("LINUX")) {
+            String           result = str.toString().replaceAll("\\r\\n", "\\\n");
+            FileOutputStream wfos   = new FileOutputStream("keyword.txt");
+            wfos.write(result.getBytes());
+            wfos.close();
+        }
 
         dbHandler.fileInsertToDB(saveFile.getAbsolutePath());
 
